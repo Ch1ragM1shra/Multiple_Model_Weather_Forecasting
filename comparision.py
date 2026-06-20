@@ -30,7 +30,7 @@ except Exception as e:
 if len(results) == 0:
     raise ValueError("No models were successfully trained.")
 
-# Sort models by MAE
+
 sorted_results = sorted(
     results.items(),
     key=lambda x: x[1]
@@ -44,7 +44,7 @@ print("=" * 50)
 for model, score in sorted_results:
     print(f"{model:<15} MAE = {score:,.2f}")
 
-# Best model
+
 best_model = min(
     results,
     key=results.get

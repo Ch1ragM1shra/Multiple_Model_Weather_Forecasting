@@ -5,14 +5,14 @@ df = pd.read_csv(
     r"C:\Users\narendra mishra\OneDrive\Desktop\Forecasting Case- Study.xlsx - Sheet1.csv"
 )
 
-# Convert Date column to datetime
+
 df["Date"] = pd.to_datetime(
     df["Date"],
     format="%d-%m-%Y",
     errors="coerce"
 )
 
-# Clean Total column and convert to numeric
+
 df["Total"] = (
     df["Total"]
     .astype(str)
