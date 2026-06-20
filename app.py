@@ -5,7 +5,7 @@ import pandas as pd
 
 app = FastAPI()
 
-# Load trained model
+
 model = joblib.load(
     "xgboost_weather_model.pkl"
 )

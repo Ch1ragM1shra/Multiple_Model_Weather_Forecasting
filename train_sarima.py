@@ -7,16 +7,16 @@ from sklearn.metrics import mean_absolute_error
 
 def train_sarima():
 
-    # Load engineered dataset
+  
     df = pd.read_csv("featured_weather_data.csv")
 
-    # Convert Date column
+    
     df["Date"] = pd.to_datetime(df["Date"])
 
-    # Sort data
+    
     df = df.sort_values(["State", "Date"])
 
-    # State-wise train/test split
+    
     train_list = []
     test_list = []
 

@@ -26,7 +26,7 @@ try:
 except Exception as e:
     print(f"LSTM failed: {e}")
 
-# Check if any model succeeded
+
 if len(results) == 0:
     raise ValueError("No models were successfully trained.")
 

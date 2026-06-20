@@ -5,10 +5,10 @@ import pandas as pd
 
 def train_xgb():
 
-    # Load engineered data
+ 
     df = pd.read_csv("featured_weather_data.csv")
 
-    # Time-based train-test split
+   
     train_size = int(len(df) * 0.8)
 
     train = df.iloc[:train_size]

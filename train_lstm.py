@@ -10,21 +10,21 @@ from sklearn.metrics import mean_absolute_error
 
 def train_lstm():
 
-    # Load engineered dataset
+  
     df = pd.read_csv("featured_weather_data.csv")
 
-    # Sort by date
+ 
     df["Date"] = pd.to_datetime(df["Date"])
     df = df.sort_values("Date")
 
-    # Use Total column
+    
     series = df["Total"].values.reshape(-1, 1)
 
-    # Scale data
+   
     scaler = MinMaxScaler()
     data = scaler.fit_transform(series)
 
-    # Create sequences
+   
     window = 8
 
     X = []
@@ -37,7 +37,7 @@ def train_lstm():
     X = np.array(X)
     y = np.array(y)
 
-    # Train-test split
+    
     split = int(len(X) * 0.8)
 
     X_train = X[:split]
@@ -74,17 +74,17 @@ def train_lstm():
         verbose=0
     )
 
-    # Predictions
+ 
     pred = model.predict(X_test, verbose=0)
 
-    # Convert back to original scale
+    
     pred = scaler.inverse_transform(pred)
 
     actual = scaler.inverse_transform(
         y_test.reshape(-1, 1)
     )
 
-    # Metrics
+    
     mae = mean_absolute_error(
         actual.flatten(),
         pred.flatten()
@@ -92,7 +92,7 @@ def train_lstm():
 
     print(f"LSTM MAE: {mae:,.2f}")
 
-    # Save predictions
+ 
     results = pd.DataFrame({
         "Actual": actual.flatten(),
         "Predicted": pred.flatten()

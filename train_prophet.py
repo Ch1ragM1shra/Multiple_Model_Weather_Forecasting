@@ -4,18 +4,16 @@ import numpy as np
 from prophet import Prophet
 from sklearn.metrics import mean_absolute_error
 
-# Load dataset
+
 df = pd.read_csv("featured_weather_data.csv")
 
-# Convert Date column
+
 df["Date"] = pd.to_datetime(df["Date"])
 
-# Sort data
+
 df = df.sort_values(["State", "Date"])
 
-# ----------------------------
-# State-wise train/test split
-# ----------------------------
+
 train_list = []
 test_list = []
 
@@ -97,9 +95,7 @@ for state in df["State"].unique():
             f"Error for {state}: {e}"
         )
 
-# ----------------------------
-# Final Results
-# ----------------------------
+
 if len(scores) > 0:
 
     avg_mae = np.mean(scores)
